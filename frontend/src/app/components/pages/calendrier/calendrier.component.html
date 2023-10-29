@@ -1,0 +1,79 @@
+<div class="container col-xl-12 col-xxl-12 py-3 pt-5 d-flex flex-column align-items-end">
+  <p>Solde de congé : {{soldeConge}} jours</p>
+  <p>Solde RTT : {{soldeRtt}} jours</p>
+</div>
+
+<section class="container col-xl-12 col-xxl-12 pb-5 d-flex gap-5 justify-content-between dir flex-row-reverse">
+
+    <div class="calendar-container position-relative flex-grow-1 ">
+        <full-calendar
+        [options]="calendarOptions"></full-calendar>
+
+      <div
+        *ngIf="showForm"
+        (click)="annulerAction()"
+        class="layer-seperator bg-transparent position-absolute top-0 w-100 h-100"
+      >
+        <div
+          (click)="$event.stopPropagation()"
+          class="form position-absolute top-50 start-50 bg-white translate-middle d-flex justify-content-center p-sm-1 p-md-4 border border-2 rounded">
+          <app-form
+            (emitter)="handleSubmit($event)"
+            (emitterAnnulation)="handleAnnulation()"
+            [event] ="event"
+          ></app-form>
+        </div>
+      </div>
+
+      <div *ngIf="showButton" class="layer-seperator bg-transparent position-absolute top-0 w-100 h-100">
+        <div
+          *ngIf="showButton"
+          (click)="annulerAction()"
+          class="layer-seperator bg-transparent position-absolute top-0 w-100 h-100"
+        >
+          <div
+            (click)="$event.stopPropagation()"
+            class="form position-absolute top-50 start-50 bg-white translate-middle d-flex justify-content-center flex-column p-sm-1 p-md-4 border border-2 rounded gap-3">
+            <button
+              (click)="annulerDemandeAbs($event)"
+              class="btn btn-outline-danger ">Annuler la demande</button>
+            <button
+              *ngIf="editable"
+              (click)="handleShowForm($event)"
+              class="btn btn-outline-primary ">Modifer la demande</button>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div
+        *ngIf="showError"
+        (click)="annulerAction()"
+        class="layer-seperator bg-transparent position-absolute top-0 w-100 h-100"
+      >
+        <div
+          (click)="$event.stopPropagation()"
+          class="text-danger form position-absolute top-50 start-50 bg-white p-5 translate-middle d-flex justify-content-center flex-column p-sm-1 p-md-4 border border-2 rounded gap-3">
+          Il y a une erreur : << {{errorMsg}} >>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="d-flex flex-column justify-content-center fs-6 gap-3 color-instruction">
+      <div class="dateDuJour legend">Date du jour</div>
+      <div class="initiale  legend">Statut initial</div>
+      <div class="conge-valide legend">Congé validé</div>
+      <div class="rtt-valide legend">Rtt validé</div>
+      <div class="rtt-employeur legend">Rtt Employeur</div>
+      <div class="refuse legend">Demande refusée</div>
+      <div class="en-attente legend">En attente de validation</div>
+    </div>
+
+
+</section>
+
+
+
+<button (click)="traitementdeNuit()">activation du traitement de nuit (bouton de développement)</button>

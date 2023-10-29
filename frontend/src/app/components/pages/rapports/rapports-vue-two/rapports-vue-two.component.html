@@ -1,0 +1,69 @@
+<section class="container py-5 ">
+  <div >
+    <div class="row justify-content-end mb-3 selects">
+
+      <div class="col-3 ">
+        <select #departementId class="form-select mb-1">
+          <option *ngFor="let departement of departements" [value]="departement.id"
+            (click)="employeByDepartement(departementId.value)" [defaultSelected]="departementGeneral">
+            {{departement.name}}</option>
+        </select>
+
+        <select id="year" name="year" #year class="form-select " [(ngModel)]="currentYear2">
+          <option *ngFor="let annee of annees" [ngValue]="annee" (click)="changeCurrentYear(year.value)">{{ annee }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <button (click)="changeMonth(-1)" class="btn btn-outline-black h-25 align-self-center"><i
+          class="bi bi-caret-left-fill"></i></button>
+      <p class="m-3 h5" #month>{{ getMonthName(currentMonth)}}</p>
+      <button (click)="changeMonth(1)" class="btn btn-outline-black h-25 align-self-center"><i
+          class="bi bi-caret-right-fill"></i></button>
+    </div>
+
+    <div class="d-flex justify-content-end">
+      <button (click)="exportToExcel()" class="btn btn-outline-black mt-4 mb-2">
+        <i class="bi bi-file-earmark-arrow-down">Télécharger au format Exel</i>
+      </button>
+    </div>
+  </div>
+
+
+
+  <div class="table-responsive">
+    <table class="table table-sm">
+      <thead>
+      <tr>
+        <th>name</th>
+        <th *ngFor="let label of lineChartLabels2">{{ label }}</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let dataset of lineChartData; let i = index">
+        <td>{{ dataset.label }}</td>
+        <td *ngFor="let value of dataset.data; let j = index">
+          <span *ngIf="value === 1 && !isWeekEnd(lineChartLabels[j]) && !isJourOff(lineChartLabels[j]) ">A</span>
+          <span *ngIf="value === 0 && !isWeekEnd(lineChartLabels[j]) && !isJourOff(lineChartLabels[j])">&nbsp;</span>
+          <span *ngIf="isWeekEnd(lineChartLabels[j]) && !isJourOff(lineChartLabels[j])" class="we"></span>
+          <span *ngIf="isFerie(lineChartLabels[j])">F</span>
+          <span *ngIf="isRttEmployeur(lineChartLabels[j])">R</span>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+  <div class="d-flex flex-row justify-content-center divLegend m-3">
+    <div class="d-flex flex-row legend">
+      <div class="carre mt-1 me-1"></div>
+      <p class="me-5 legend"> = weekend</p>
+    </div>
+    <p class="me-5 legend">A = absence </p>
+    <p class="me-5 legend">F = Jour Ferié</p>
+    <p class="me-5 legend">R = RTT employeur</p>
+  </div>
+</section>

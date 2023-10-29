@@ -1,0 +1,73 @@
+@import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import 'node_modules/bootstrap-icons/font/bootstrap-icons.css';
+
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.navbar-nav > li{
+  margin-left:6px;
+  margin-right:6px;
+  font-size: 0.9em;
+}
+.navbar-nav > li > .nav-link:hover, .navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+  color:#0d6efd;
+}
+.fc .fc-bg-event {
+  opacity: unset;
+  background: none;
+}
+.fc-widget-content .fc-scroller {height: auto !important;}
+
+.fc-toolbar .fc-toolbar-title {
+  font-size:1.4em;
+  text-transform:capitalize;
+  font-weight:bold;
+}
+.btn-primary:not(.fc-today-button){
+  color: black !important;
+  background-color: white !important;
+  border-color: black !important;
+}
+.btn-primary:not(.fc-today-button):hover{
+  color: white !important;
+  background-color: black !important;
+  border-color: white !important;
+}
+.btn-primary:not(.fc-today-button):active{
+  color: white !important;
+  background-color: black !important;
+  border-color: white !important;
+}
+
+.fc-today-button{
+  color: black !important;
+  background-color: white !important;
+  border-color: black !important;
+}
+
+.fc-today-button:hover{
+  color: white !important;
+  background-color: black !important;
+  border-color: white !important;
+}
+
+
+@media (max-width: 768px) {
+  h2 {
+    font-size: 1.5rem !important;
+    margin: 1rem 1rem !important;
+  }
+
+  .dateDuJour, .initiale, .conge-valide, .rtt-valide, .en-attente, .refuse {
+    font-size: 0.7rem !important;
+  }
+
+.fc-today-button{
+ margin-bottom: 1rem;
+}
+
+}

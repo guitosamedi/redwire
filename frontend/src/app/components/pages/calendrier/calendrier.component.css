@@ -1,0 +1,90 @@
+.color-instruction > div {
+    position: relative;
+    margin:0rem 2rem ;
+}
+
+.color-instruction > div::before {
+  content:'';
+  display:block;
+  width:2rem;
+  height:2rem;
+  position: absolute;
+  left: -2.3rem;
+
+}
+
+.dateDuJour::before {
+   background-color: #fffadf;
+}
+
+.initiale::before {
+  background-color: #ffd2e1;
+
+}
+
+.conge-valide::before {
+    background-color:#35FDBE;
+}
+
+.rtt-valide::before  {
+    background-color:#FEDD00;
+}
+
+.en-attente::before{
+    background-color:#2B1B7B;
+}
+
+.refuse::before{
+    background-color:#f00020;
+}
+
+.rtt-employeur::before{
+  background-color:#77baed;
+}
+
+.form{
+    z-index: 3;
+    cursor: default;
+}
+
+.layer-seperator{
+  z-index: 4;
+  width: 100%;
+  cursor: pointer;
+
+}
+
+::ng-deep .fc-daygrid-day-frame {
+  cursor: pointer;
+}
+
+
+@media screen and (max-width: 1000px){
+  .color-instruction > div{
+    margin: 0.1rem 0rem !important;
+  }
+
+  .color-instruction > div::before {
+    content:'';
+    display:block;
+    width:1rem;
+    height:1rem;
+    position: absolute;
+    left: -2.3rem;
+  
+  }
+
+  .legend{
+   margin: 0rem 0rem;
+  }
+
+.dir{
+    flex-direction: column !important;
+  }
+   .color-instruction{
+    flex-direction: column ;
+    font-size: 0.8rem !important ;
+    align-items: center;
+  }
+}
+

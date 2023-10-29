@@ -1,0 +1,41 @@
+<section class="container">
+
+
+  <div class="row justify-content-end ">
+    <div class="col-3 ">
+
+      <select #departementId class="form-select mb-1">
+        <option *ngFor="let departement of departements" [value]="departement.id"
+          (click)="employeByDepartement(departementId.value)" [defaultSelected]="departementGeneral">
+          {{departement.name}}
+        </option>
+      </select>
+      <select id="year" name="year" #year class="form-select mb-1" [(ngModel)]="currentYear" (change)="updateLineChartLabels()">
+        <option *ngFor="let annee of annees" [ngValue]="annee">{{ annee }}</option>
+      </select>
+
+
+
+    </div>
+
+
+    <div class="d-flex justify-content-center">
+      <button (click)="changeMonth(-1)" class="btn btn-outline-black  align-self-center"><i
+        class="bi bi-caret-left-fill"></i></button>
+        <p class="m-3 h5 ">{{getMonthName()}} {{currentYear}}</p>
+      <button (click)="changeMonth(1)" class="btn btn-outline-black align-self-center"><i
+        class="bi bi-caret-right-fill"></i></button>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button (click)="exportToExcel()" class="btn btn-outline-black mt-4 mb-2 ">
+      <i class="bi bi-file-earmark-arrow-down">Télécharger au format Exel</i>
+    </button>
+  </div>
+  <div class="d-flex histo">
+    <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+      [legend]="lineChartLegend"></canvas>
+  </div>
+
+</section>

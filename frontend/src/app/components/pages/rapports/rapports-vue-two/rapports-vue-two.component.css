@@ -1,0 +1,59 @@
+/* grid-chart.component.css */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td{
+  border: 1px solid #000; /* Add a border to th and td elements */
+  padding: 8px;
+  text-align: center;
+}
+
+/* Style for empty cells */
+td span {
+  display: inline-block;
+  width: 16px; /* Adjust the width as needed */
+  height: 16px; /* Adjust the height as needed */
+  font-weight: bold;
+}
+
+.legend{
+  font-weight: bold;
+}
+
+.we{
+  background-color: grey;
+}
+
+.carre{
+  background-color: grey;
+  ;
+  height: 1rem;
+  width: 1rem;
+
+
+}
+@media (max-width: 768px) {
+  .table-responsive {
+    overflow-x: auto;
+  }
+  .table {
+    width: 100%;
+  }
+
+  .table th,
+  .table td {
+    white-space: nowrap;
+  }
+
+  .divLegend {
+    flex-direction:  column !important;
+    align-items: center;
+  }
+
+
+
+}
+

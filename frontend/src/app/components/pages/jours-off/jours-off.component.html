@@ -1,0 +1,71 @@
+<section class="row align-items-center justify-content-between">
+  <div class="col-md-2 mt-4">
+    <div class="color-instruction">
+      <div class="d-flex dateDuJour">Date du jour</div>
+      <div class="d-flex rtt">RTT Employeur</div>
+      <div class="d-flex jf">Jour Férié</div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div *ngIf="showError">
+      <ngb-alert #selfClosingAlert *ngIf="errorMsg" type="danger" (closed)="errorMsg = ''"
+      >{{ errorMsg }}
+      </ngb-alert>
+    </div>
+    <ng-template #content let-offcanvas>
+      <div *ngIf="showForm">
+        <div class="offcanvas-header">
+          <div></div>
+          <button (click)="hidePanel()" aria-label="Close" class="btn-close rounded-circle" type="button"></button>
+        </div>
+        <div *ngIf="roles?.includes('ADMIN')" class="form-container">
+          <div class="offcanvas-body row">
+            <h5
+              class="offcanvas-title">{{ editable && selectedEvent ? 'Modifier le jour officiel' : 'Créer un jour officiel' }}</h5>
+            <div class="col-md-12">
+              <form #form="ngForm" (ngSubmit)="createOrUpdateJourOff()" class="form">
+                <label class="pt-3" for="floatingTextarea">Description (facultatif)</label>
+                <input [(ngModel)]="jo.description" aria-label="Description" class="form-control"
+                       id="floatingTextarea"
+                       name="description" placeholder="Description" type="text">
+
+                <label class="pt-3" for="floatingTextarea">Date</label><br/>
+                <input [(ngModel)]="jo.jour" aria-label="Date" class="form-control pt-1" name="jour"
+                       placeholder="Description"
+                       type="date">
+
+                <div class="pt-3">
+                  <button (click)="offcanvas.dismiss()" class="btn btn-outline-primary" type="submit">
+                    Enregistrer
+                  </button>
+                  <button (click)="deleteJourOff(selectedEvent.id); hidePanel()"
+                          *ngIf="editable && selectedEvent" class="btn btn-outline-danger ms-2"
+                          type="button">
+                    Supprimer
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="list-container overflow-auto">
+            <div class="col-md-12 p-4 ">
+              <h5>Liste jours officiels</h5>
+              <ul class="list-jo">
+                <li *ngFor="let j of joursOffs">{{j.description ? j.description : j.typeJour}}
+                  - {{ j.jour | date:'dd/MM/yyyy' }}</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+    <full-calendar [options]="calendarOptions" id="calendar"></full-calendar>
+  </div>
+  <div class="col-md-3 mt-4 ps-5 overflow-auto list-container">
+    <h6 class="my-4">Liste jours officiels</h6>
+    <ul class="d-flex flex-column gap-3">
+      <li *ngFor="let j of joursOffs">{{j.description ? j.description : j.typeJour}}
+        - {{ j.jour | date:'dd/MM/yyyy' }}</li>
+    </ul>
+  </div>
+</section>

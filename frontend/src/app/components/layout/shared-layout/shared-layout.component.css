@@ -1,0 +1,5 @@
+.router-outlet-container {
+  min-height: 90vh; /* Ensure the container takes at least the full viewport height */
+  display: flex;     /* Use flexbox to fill the available space */
+  flex-direction: column; /* Stack children vertically */
+}

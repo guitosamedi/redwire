@@ -1,0 +1,42 @@
+<header class="bg-white">
+  <nav class="navbar navbar-expand-lg navbar-light mb-3">
+    <div class="container">
+
+      <a [routerLink]="'/home'" class="navbar-brand fw-bold nav-link"><img class="logo"src="assets/Fichier1.svg" alt=""></a>
+
+      <button (click)="isMenuCollapsed = !isMenuCollapsed" class="navbar-toggler" type="button">&#9776;</button>
+      <div
+        [ngbCollapse]="isMenuCollapsed" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item active">
+            <a (click)="isMenuCollapsed = true" [routerLink]="'/home'" [routerLinkActive]="['active']" class="nav-link">Dashboard</a>
+          </li>
+          <li *ngIf="roles?.includes('MANAGER')" class="nav-item" ngbDropdown>
+            <a class="nav-link" id="navbarDropdown3" ngbDropdownToggle role="button" tabindex="0"> Absences </a>
+            <div aria-labelledby="navbarDropdown3" class="dropdown-menu" ngbDropdownMenu>
+              <a (click)="$event.preventDefault()" [routerLink]="'/validation'" [routerLinkActive]="['active']" ngbDropdownItem>Validation des
+                absences</a>
+              <a (click)="$event.preventDefault()" [routerLink]="'/rapports'" [routerLinkActive]="['active']" ngbDropdownItem>Rapports</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a (click)="isMenuCollapsed = true" [routerLink]="'/calendrier'" [routerLinkActive]="['active']" class="nav-link">Calendrier</a>
+          </li>
+          <li
+            class="nav-item">
+            <a (click)="isMenuCollapsed = true" [routerLinkActive]="['active']" [routerLink]="'/jours-off'"
+               class="nav-link">Jours officiels</a>
+          </li>
+          <li class="nav-item">
+            <span class="nav-link">Bonjour  {{employe.firstName}}</span>
+          </li>
+          <li class="nav-item">
+            <a (click)="logOut()" [routerLink]="'/login'"
+               class="btn btn-outline-primary rounded-pill px-3">Déconnexion</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+</header>

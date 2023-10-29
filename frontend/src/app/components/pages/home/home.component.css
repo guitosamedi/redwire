@@ -1,0 +1,12 @@
+h1{
+    margin-top: 10rem !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 1.5rem;
+}
+
+.para{
+   font-style: italic;
+   font-size: 2rem;
+   text-align: center;
+   margin-top: 2rem;
+}

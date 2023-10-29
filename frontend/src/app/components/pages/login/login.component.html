@@ -1,0 +1,40 @@
+<section class="container col-xl-12 col-xxl-12 py-5">
+  <div class="row align-items-center g-lg-5 py-5">
+    <div class="col-lg-7 text-center text-lg-start">
+      <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">Projet Fil Rouge : Gestion des congés et jours
+        feriés</h1>
+      <div class="col-lg-10 ">
+        <h2 class="lead fs-4">Groupe #1</h2>
+        <ul class="p-0 m-0">
+          <li>Antoine LiGEROT</li>
+          <li>Kamella VERGNAUD</li>
+          <li>Liting QIU</li>
+          <li>Guito SAMEDI</li>
+        </ul>
+        <div class="pt-4">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-10 mx-auto col-lg-5">
+      <form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <div class="form-floating mb-3">
+          <input #email class="form-control" id="floatingInput" name="email"
+                 placeholder="redwireback@gmail.com" type="email" value="redwireback@gmail.com">
+          <label for="floatingInput">Email</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input #password class="form-control" id="floatingPassword" placeholder="Mot de passe"
+                 type="password"
+                 value="passwordtout">
+          <label for="floatingPassword">Mot de passe</label>
+        </div>
+        <button (click)="signIn(email.value,password.value)" class="w-100 btn btn-lg btn-outline-primary"
+                type="button">Se Connecter
+        </button>
+        <p class=" text-danger text-center pt-3">{{messageErr}}</p>
+      </form>
+
+    </div>
+
+  </div>
+</section>
