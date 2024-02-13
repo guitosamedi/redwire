@@ -2,10 +2,6 @@
 
 
 Groupe 1
-- Antoine LiGEROT
-- Kamella VERGNAUD
-- Liting QIU
-- Guito SAMEDI
 
 ### Installation
 il faut d'aord créer une datasource avec les bonnes credentials,
